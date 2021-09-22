@@ -1,2 +1,2 @@
-#!/bin/bash AppData/ bash/   Contacts/ Desktop/  Documents/
-# Downloads/ Favorites/
+#!/bin/bash
+ls
