@@ -1,3 +1,2 @@
-#!/bin/bash AppData/ bash/ c/ cd Contacts/ Desktop/ Desktop.zip  Documents/
- Downloads/ Favorites/
-
+#!/bin/bash AppData/ bash/   Contacts/ Desktop/  Documents/
+# Downloads/ Favorites/
