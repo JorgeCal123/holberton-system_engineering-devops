@@ -1,2 +1,2 @@
 #!/bin/bash
-printf "hello whoiam"
+echo hola $USER
