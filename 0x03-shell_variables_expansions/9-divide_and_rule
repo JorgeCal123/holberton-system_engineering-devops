@@ -1,2 +1,2 @@
 #!/bin/bash
-let div=$POWER/$DIVIDE |echo $div
+echo $(($POWER/$DIVIDE))
