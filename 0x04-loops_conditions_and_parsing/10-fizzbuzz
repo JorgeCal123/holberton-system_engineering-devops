@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-#  Script bach FizzBuzz
+#Script bach FizzBuzz
 conter=1
 while [ $conter -le 100 ];
 do
-	if [ $((conter%3)) == 0 -a $((conter%5)) == 0 ]
+	if (( conter % 3 == 0 && conter % 5 == 0 ))
 	then
 		echo "FizzBuzz"
 	elif [ $((conter%3)) == 0 ]
@@ -16,5 +16,5 @@ do
 		echo $conter
 	fi
 
-	let conter=conter+1
+	(( conter++ ))
 done
