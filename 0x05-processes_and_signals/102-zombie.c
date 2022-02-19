@@ -19,11 +19,12 @@ int infinite_while(void)
  * create_zombie - creates 5 zombie processes
  * Return: pid of process zombie
  */
-pid_t create_zombie()
+pid_t create_zombie(void)
 {
 	pid_t zombie;
+
 	zombie = fork();
-	return zombie;
+	return (zombie);
 }
 
 /**
@@ -37,8 +38,9 @@ int main(void)
 	while (i < 5)
 	{
 		pid_t zombie = create_zombie();
+
 		if (!zombie)
-			return(0);
+			return (0);
 		printf("Zombie process created, PID: %d\n", zombie);
 		i++;
 	}
