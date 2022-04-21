@@ -2,7 +2,9 @@
 # Sets up an nginx web server
 sudo apt-get -y update
 sudo apt-get install -y nginx
-echo "Hello World!" >/var/www/html/index.html
-sudo mv index.html /var/www/html/
-sudo sed -i "/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=dQw4w9WgXcQ permanent;" /etc/nginx/sites-available/default
-sudo service nginx restart
+echo "Hello World!" >/var/www/html/index.nginx-debian.html
+#sudo mv index.html /var/www/html/
+#sudo sed -i "/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=dQw4w9WgXcQ permanent;" /etc/nginx/sites-available/default
+#sudo service nginx restart
+sed -i '46i rewrite ^/redirect_me https://www.nginx.com/ permanent;' /etc/nginx/sites-available/default
+service nginx restart
