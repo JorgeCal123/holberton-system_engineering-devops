@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Sets up an nginx web server
+service nginx stop
 sudo apt-get -y update
 sudo apt-get install -y nginx
-ufw allow  'Nginx HTTP'
+ufw allow 'Nginx HTTP'
 echo "Hello World!" >/var/www/html/index.nginx-debian.html
-echo "Hello World!" >/var/www/html/index.nginx-debian.html
-sed -i '46i rewrite ^/redirect_me https://www.nginx.com/ permanent;' /etc/nginx/sites-available/default
-service nginx restart
+sed -i "/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu permanent;" /etc/nginx/sites-available/default
+service nginx start
