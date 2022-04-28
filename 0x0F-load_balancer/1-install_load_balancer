@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Configure a HAproxy load-balancer
+sudo apt -y upgrade
 sudo apt install software-properties-common
 sudo add-apt-repository ppa:vbernat/haproxy-2.5
 sudo apt update
