@@ -38,15 +38,15 @@ defaults
 frontend www-http
         bind *:80
         mode http
-        reqadd X-Forwarded-Proto:\ http
+#        reqadd X-Forwarded-Proto:\ http
         default_backend www-backend
 
 frontend www-https
         bind :443 ssl crt /etc/haproxy/certs/www.jorcal321.tech.pem
-        reqadd X-Forwarded-Proto:\ https
+#        reqadd X-Forwarded-Proto:\ https
         default_backend www-backend
 
-backend web-backend
+backend www-backend
         redirect scheme https if !{ ssl_fc }
         balance roundrobin
         server 3821-web-01 54.226.20.179:80 check
