@@ -16,6 +16,7 @@ if __name__ == "__main__":
     dict_arr = []
     labels = ['userId', 'username', 'completed', 'title']
 
+    name_file = argv[1] + ".csv"
     for t in todos_dict:
         if t['userId'] == int(argv[1]):
             dict_format = {}
@@ -28,10 +29,8 @@ if __name__ == "__main__":
     try:
         name_file = argv[1] + ".csv"
         with open(name_file, 'w') as f:
-            writer = csv.DictWriter(f, quoting=csv.QUOTE_ALL,
-                                    fieldnames=labels)
-            writer.writeheader()
+            writer = csv.writer(f, quoting=csv.QUOTE_ALL)
             for elem in dict_arr:
-                writer.writerow(elem)
+                writer.writerow(elem.values())
     except IOError:
         print("I/O error")
