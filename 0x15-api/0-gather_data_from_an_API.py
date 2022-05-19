@@ -1,7 +1,8 @@
 #!/usr/bin/python3
+
+"""script that, using this REST API, for a given employee ID"""
 import requests
 from sys import argv
-
 
 user = requests.get('https://jsonplaceholder.typicode.com/users/' + argv[1])
 user_dict = user.json()
