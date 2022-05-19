@@ -16,7 +16,6 @@ if __name__ == "__main__":
     dict_arr = []
     labels = ['userId', 'username', 'completed', 'title']
 
-    name_file = argv[1] + ".csv"
     for t in todos_dict:
         if t['userId'] == int(argv[1]):
             dict_format = {}
