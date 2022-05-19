@@ -28,6 +28,8 @@ if __name__ == "__main__":
         with open(id, "w") as f:
             writer = csv.writer(f, quoting=csv.QUOTE_ALL)
             for elem in taskarr:
-                writer.writerow(elem.values())
+                lined = [elem["user_id"], elem["username"],
+                         elem["completed"], elem["title"]]
+                writer.writerow(lined)
     except IOError:
         print("I/O error")
