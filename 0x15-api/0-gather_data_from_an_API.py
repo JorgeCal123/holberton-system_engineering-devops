@@ -3,7 +3,7 @@ import requests
 from sys import argv
 
 
-user = requests.get('https://jsonplaceholder.typicode.com/users/'+ argv[1])
+user = requests.get('https://jsonplaceholder.typicode.com/users/' + argv[1])
 user_dict = user.json()
 
 todos = requests.get('https://jsonplaceholder.typicode.com/todos')
@@ -18,5 +18,6 @@ for t in todos_dict:
             done_task += 1
             tasks += '\t' + t['title'] + '\n'
 
-msm = "Employee {} is done with tasks({}/{}):\n{}".format(user_dict['name'], done_task, all_task, tasks)
+msm = "Employee {} is done with tasks({}/{}):\n{}".format(
+        user_dict['name'], done_task, all_task, tasks)
 print(msm, end="")
