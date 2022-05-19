@@ -17,7 +17,7 @@ if __name__ == "__main__":
             all_task += 1
             if t['completed']:
                 done_task += 1
-                tasks += "\t{}\n".format(t['title'])
+                tasks += "\t {}\n".format(t['title'])
 
     msm = "Employee {} is done with tasks({}/{}):\n{}".format(
             user_dict['name'], done_task, all_task, tasks)
