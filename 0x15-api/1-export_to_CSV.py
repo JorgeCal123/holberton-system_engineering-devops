@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 """script that, using this REST API, for a given employee ID"""
+
+import csv
 import requests
 from sys import argv
-import csv
 
 if __name__ == "__main__":
     user = requests.get('https://jsonplaceholder.typicode.com/users/' +
