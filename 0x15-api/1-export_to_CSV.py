@@ -12,7 +12,6 @@ if __name__ == "__main__":
     todos = requests.get('https://jsonplaceholder.typicode.com/todos')
     todos_dict = todos.json()
 
-    
     dict_arr = []
     labels = ['userId', 'username', 'completed', 'title']
 
@@ -24,11 +23,12 @@ if __name__ == "__main__":
             dict_format['completed'] = t['completed']
             dict_format['title'] = t['title']
             dict_arr.append(dict_format)
-            #print(dict_format)
+
     try:
         name_file = argv[1] + ".csv"
         with open(name_file, 'w') as f:
-            writer = csv.DictWriter(f, quoting=csv.QUOTE_ALL, fieldnames=labels)
+            writer = csv.DictWriter(f, quoting=csv.QUOTE_ALL,
+                                    fieldnames=labels)
             writer.writeheader()
             for elem in dict_arr:
                 writer.writerow(elem)
