@@ -1,5 +1,5 @@
-
-u should look at the following URL's in order to grasp a solid understanding
+##
+# You should look at the following URL's in order to grasp a solid understanding
 # of Nginx configuration files in order to fully unleash the power of Nginx.
 # https://www.nginx.com/resources/wiki/start/
 # https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/
@@ -20,30 +20,12 @@ u should look at the following URL's in order to grasp a solid understanding
 #
 server {
         listen 80 default_server;
+location /hbnb_static/ { alias /data/web_static/current/;}
+add_header X-Served-By $hostname;
+rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
         listen [::]:80 default_server;
-        add_header X-Served-By $hostname;
 
-        error_page 404 /custom_404.html;
-        location = /custom_404.html {
-                root /usr/share/nginx/html;
-                internal;
-        }
 
-        rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu permanent;
-
-        location hbnb_static {
-                alias /data/web_static/current/;
-        }
-
-        location /airbnb-onepage/ {
-            include proxy_params;
-            proxy_pass http://0.0.0.0:5000/airbnb-onepage/;
-        }
-
-        location /airbnb-dynamic/number_odd_or_even/ {
-                include proxy_params;
-                proxy_pass http://0.0.0.0:5001/number_odd_or_even/;
-        }
         # SSL configuration
         #
         # listen 443 ssl default_server;
@@ -67,13 +49,26 @@ server {
 
         server_name _;
 
+	location /airbnb-onepage/ {
+	    proxy_pass http://0.0.0.0:5000/airbnb-onepage/;
+	}
 
-
-        location / {
-                # First attempt to serve request as file, then
-                # as directory, then fall back to displaying a 404.
-                try_files $uri $uri/ =404;
+	location /airbnb-dynamic/number_odd_or_even/ {
+                proxy_pass http://localhost:5001/number_odd_or_even/;
         }
+
+	location /api/ {
+		proxy_pass http://localhost:5002/api/;
+	}
+
+	location / {
+		proxy_pass http://127.0.0.1:5003/2-hbnb;
+	}
+
+	location /static {
+		proxy_pass http://127.0.0.1:5003;
+	}
+
 
         # pass PHP scripts to FastCGI server
         #
